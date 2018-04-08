@@ -5,7 +5,29 @@
 WcPlus::WcPlus()
 {
 }
-
+//袁巡部分
+WcPlus::WcPlus(const int &argc,char * argv[])
+{
+		if (argc > 1) {
+				string path(argv[argc - 1]);
+				regex ifname("[[:alnum:]]+\\.txt$", regex::icase);
+				if (!regex_search(path, ifname))
+				{
+						cout << "match failed";
+						exit(-1);
+				}
+				input.open(path);
+				if (input.is_open()) {
+						cout << "valid filePath";
+				}
+				else {
+						cout << "inValid filePath";
+				}
+		}
+		else {
+				cout << "not input filePath";
+		}
+}
 //张伟东部分
 void WcPlus::getWordList()
 {
