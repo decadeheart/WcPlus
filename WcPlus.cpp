@@ -37,7 +37,16 @@ void WcPlus::getWordList()
 		input >> skipws;
 		input.close();
 }
-
+//尹榛菲部分
+void WcPlus::sortWord()
+{
+		for (auto w = word.begin(); w != word.end(); ++w)
+		{
+				result.push_back(*w);
+		}
+		auto cmp = [](const pair<string, unsigned>& r1, const pair<string, unsigned>& r2) {return r1.second > r2.second; };
+		stable_sort(result.begin(), result.end(), cmp);
+}
 WcPlus::~WcPlus()
 {
 }
