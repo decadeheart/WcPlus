@@ -47,6 +47,35 @@ void WcPlus::sortWord()
 		auto cmp = [](const pair<string, unsigned>& r1, const pair<string, unsigned>& r2) {return r1.second > r2.second; };
 		stable_sort(result.begin(), result.end(), cmp);
 }
+//刘天植部分
+void WcPlus::outPut()
+{
+		ofstream output("result.txt");
+		if (output.is_open())
+		{
+				if (result.size() < 100)
+				{
+						for (auto p = result.begin(); p != result.end()-1; ++p)
+						{
+								output << p->first << " " << p->second << endl;
+						}
+						output << result[result.size() - 1].first << " " << result[result.size() - 1].second;
+				}
+				else
+				{
+						for (auto p = result.begin(); p != result.begin() + 99; ++p)
+						{
+								output << p->first << " " << p->second << endl;
+						}
+						output << result[99].first << " " << result[99].second;
+				}
+		}
+		else
+		{
+				cout << "打不开文件！" << endl;
+		}
+		output.close();
+}
 WcPlus::~WcPlus()
 {
 }
